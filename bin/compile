@@ -161,6 +161,12 @@ echo "-----> Vendoring node into slug"
 mkdir -p "$BUILD_DIR/bin"
 cp "$VENDORED_NODE/bin/node" "$BUILD_DIR/bin/node"
 
+#vendor ffmpeg into the slug
+echo  "-----> Vendoring FFmpeg into slug"
+cp "$LP_DIR/vendor/ffmpeg/ffmpeg" "$BUILD_DIR/bin/ffmpeg"
+echo "-----> Testing FFmpeg"
+which ffmpeg
+
 # setting up paths for building
 PATH="$VENDORED_SCONS:$VENDORED_NODE/bin:$PATH"
 INCLUDE_PATH="$VENDORED_NODE/include"
