@@ -72,7 +72,7 @@ function resolve_version() {
 }
 
 function package_engine_version() {
-  version=$(cat $BUILD_DIR/package.json | $bootstrap_node/bin/node $LP_DIR/vendor/json/json engines.$1 2>/dev/null)
+  version=$(cat $BUILD_DIR/bl_package.json | $bootstrap_node/bin/node $LP_DIR/vendor/json/json engines.$1 2>/dev/null)
   if [ $? == 0 ]; then
     echo $version | sed -e 's/\([<>=]\) /\1/g'
   fi
@@ -121,7 +121,7 @@ echo "-----> Resolving engine versions"
 # add a warning if no version of node specified
 if [ "${engine_requests["node"]}" == "" ]; then
   echo
-  echo "WARNING: No version of Node.js specified in package.json, see:" | indent
+  echo "WARNING: No version of Node.js specified in bl_package.json, see:" | indent
   echo "https://devcenter.heroku.com/articles/nodejs-versions" | indent
   echo
   echo "WARNING: The default version of Node.js and npm on Heroku will begin" | indent
